@@ -32,10 +32,10 @@
     ori a0, s0, 9 # so, if it didn't jump, we load the string "non_zero" onto a0
 
     jumpCall: ecall # call the OS
-                # by default, the OS runs the instruction whose code is stored at a7
+                    # by default, the OS runs the instruction whose code is stored at a7
 
-                # if the OS instruction requires 1 argument, the OS looks for it at a0
-                # if it requires more than 1 arguments, it looks for other arguments at a1, a2, etc.
+                    # if the OS instruction requires 1 argument, the OS looks for it at a0
+                    # if it requires more than 1 arguments, it looks for other arguments at a1, a2, etc.
 
-                # in this case, since we stored 4, the instruction code for print string, at a7,
-                # the OS will print whatever is at a0
+                    # in this case, since we stored 4, the instruction code for print string, at a7,
+                    # the OS will print whatever is at a0
