@@ -58,4 +58,5 @@
     # if the OS instruction requires 1 argument, the OS looks for it at a0
     #
     # in this case, since a7 contains 4, the instruction code for "print string",
-    jump_location: ecall
+    jump_location:
+        ecall
