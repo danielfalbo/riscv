@@ -5,7 +5,7 @@
 #
 #
 
-.data # starts at address 0x10010
+.data # starts at address 0x10010000
 
     # takes 4 bytes: all words take 4 bytes in 32-bit risc-v
     .word 9 # starts at 0x10010
