@@ -8,7 +8,7 @@
 .data # starts at address 0x10010000
 
     # takes 4 bytes: all words take 4 bytes in 32-bit risc-v
-    .word 9 # starts at 0x10010
+    .word 9 # starts at 0x10010000
 
     # takes 5 bytes: 1 per char + 1 for terminator
     .asciz "zero" # starts at 0x10010004
@@ -59,4 +59,9 @@
     #
     # in this case, since a7 contains 4, the instruction code for "print string",
     jump_location:
+        ecall
+
+        # exit program with succesful exit code 0,
+        # which is instruction code 10 for the OS
+        addi a7, zero, 10
         ecall

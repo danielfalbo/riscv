@@ -5,8 +5,8 @@
 
 
 .data # starts at address 0x10010000
-    .word 17
-    .word 25
+    .word 17 # 0x10010000
+    .word 25 # 0x10010004
 
 .text # starts at address 0x00400000
     # load the address of the first data word onto t0
