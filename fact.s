@@ -20,6 +20,3 @@
 
         addi a7, zero, 10
         ecall
-
-
-
