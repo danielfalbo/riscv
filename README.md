@@ -5,7 +5,7 @@
   ```bash
   brew install java
   alias rars='java -jar rars.jar' # get it from github.com/TheThirdOne/rars/releases
-  rars hello.s
+  rars hello.asm
   ```
 
 - [RARS Supported-Instructions](https://github.com/TheThirdOne/rars/wiki/Supported-Instructions)
