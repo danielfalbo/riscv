@@ -1,8 +1,11 @@
 # function f(a, b) computes a + b
 
 .text
+    # load arguments
     li a2, 2
     li a3, 2
+
+    # call function
     jal ra, sum
 
     # print result (stored in a0 by tradition)
@@ -18,18 +21,12 @@
 
     sum:
         add a0, a2, a3
+
         jalr zero, ra, 0
 
-
     newLine:
-        # li: load immediate
-        #       uses addi, ori, or something like that
-        #       under the hood
-        # 10: ascii code for "\n"
         li a0, 10
-        # 11: system call for "print character"
         li a7, 11
         ecall
 
-        # jump back to where we left
         jalr zero, ra, 0
