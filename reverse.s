@@ -51,7 +51,8 @@
         # t2 = value of item at frame pointer, current item of original array
         lw t2, 0(fp)
 
-        # store t2, value of current original item, at t4, current new item address
+        # store t2, value of current original item,
+        # at t4, current new item address
         sw t2, 0(t4)
 
         # t4 = address of current new item + 0x04, address of next new item
