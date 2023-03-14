@@ -97,7 +97,7 @@
 
         # load code for char "\n" onto a0
         li a0, 10
-        # call os code with instruction code 11, "print character"
+        # call os with instruction code 11, "print character"
         li a7, 11
         ecall
 
