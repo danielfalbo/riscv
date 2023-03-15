@@ -45,7 +45,7 @@
         # to make room for 1 piece of data
         addi sp, sp, -4
 
-        # push the return address and the argument onto the stack
+        # push the return address onto the stack
         sw ra, 0(sp)
 
         # make a0 point to a0.next and call len
