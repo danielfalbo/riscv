@@ -1,6 +1,6 @@
 .data
     .asciz "acsai è fighissimo" # 0x10010000
-    # note: "è" couts for 2 characters
+    # note: "è" counts for 2 characters
 
 .text
     # load the address of the beginning of the str we want to measure the length of
