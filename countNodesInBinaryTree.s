@@ -16,7 +16,7 @@
 
 .text
     lw a0, root # a0 = root reference
-    jal ra, count # a0 = count(head)
+    jal ra, count # a0 = count(root)
 
     # print a0
     addi a7, zero, 1
@@ -29,14 +29,14 @@
 
     beq zero, zero, exit
 
-    # count(head: a0) {
-    #   if head == null: return 0
-    #   else: return 1 + count(head.right_child) + count(head.left_child)
+    # count(root: a0) {
+    #   if root == null: return 0
+    #   else: return 1 + count(root.right_child) + count(root.left_child)
     # }
     #
     # overrides a0 with the result!
     count:
-        # if head == null: return #(0)
+        # if root == null: return #(0)
         beq a0, zero, return
 
         # else
@@ -45,33 +45,33 @@
         addi sp, sp, -4
         sw ra, 0(sp)
 
-        # push head to stack
+        # push root to stack
         addi sp, sp, -4
         sw a0, 0(sp)
 
-        # a0 = head.right_child
+        # a0 = root.right_child
         lw a0, 8(a0)
-        # a0 = count(head.right_child)
+        # a0 = count(root.right_child)
         jal ra, count
 
-        # t0 = count(head.right_child)
+        # t0 = count(root.right_child)
         add t0, zero, a0
 
-        # pop head from stack to a0
+        # pop root from stack to a0
         lw a0, 0(sp)
         addi sp, sp, 4
 
-        # a0 = head.left_child
+        # a0 = root.left_child
         lw a0, 4(a0)
 
-        # push count(head.right_child) to stack
+        # push count(root.right_child) to stack
         addi sp, sp, -4
         sw t0, 0(sp)
 
-        # a0 = count(head.left_child)
+        # a0 = count(root.left_child)
         jal ra, count
 
-        # pop count(head.right_child) from stack to t0
+        # pop count(root.right_child) from stack to t0
         lw t0, 0(sp)
         addi sp, sp, 4
 
