@@ -1,6 +1,7 @@
 #
 # Given a linked list in the data segment,
-# this program finds and print the address of its last element.
+# this program finds and print the address of its last element,
+# and also the actual value at that address.
 #
 
 .data:
