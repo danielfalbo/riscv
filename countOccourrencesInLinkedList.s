@@ -16,69 +16,69 @@
     x:      .word 1
 
 .text:
-	lw a0, head # a0 = reference to first node
-	
-	lw a1, x # a1 = value of x
-	jal ra, count # a0 = result of count(head, x)
-	
-	# print a0
-	addi a7, zero, 1
-	ecall
-	
-	# exit
-	addi a7, zero, 10
-	ecall
+    lw a0, head # a0 = reference to first node
 
-	# 
-	# count(head, x) {
-	# 	if head == null:
-	# 		return 0
-	# 	else if head.value == x:
-	# 		return 1 + count(head.next, x)
-	#	else:
-	# 		return count(head.next, x)
-	# }
-	#
-	# head: a0
-	# x: a1
-	#
-	# overrides a0 with the result!
-	#
-	count:
-		# if head == null: return #(0)
-		beq a0, zero, return
+    lw a1, x # a1 = value of x
+    jal ra, count # a0 = result of count(head, x)
 
-		lw t0, 0(a0) # t0 = head.value
-		# else if head.value != x: return count(head.next, x)
-		bne t0, a1, return_count_next
-		
-		# else: #(if head.value == x)
-		
-		# push ra to sack
-		addi sp, sp, -4
-		sw ra, 0(sp)
-		
-		lw a0, 4(a0) # a0 = head.next
-		jal ra, count # a0 = count(head.next, x)		
-		addi a0, a0, 1 # a0++, "return a0 + 1"
+    # print a0
+    addi a7, zero, 1
+    ecall
 
-		# pop ra from stack and jump back there
-		lw ra, 0(sp)
-		addi sp, sp, 4
-		beq zero, zero, return
+    # exit
+    addi a7, zero, 10
+    ecall
 
-	return: jalr zero, 0(ra)
-	
-	return_count_next:
-		lw a0, 4(a0) # a0 = head.next
-		
-		# push ra to sack
-		addi sp, sp, -4
-		sw ra, 0(sp)
-		
-		jal ra, count # a0 = count(head.next, x)
-		
-		# pop ra from stack and jump back there
-		lw ra, 0(sp)
-		addi sp, sp, 4
-		beq zero, zero, return
+    #
+    # count(head, x) {
+    #   if head == null:
+    #       return 0
+    #   else if head.value == x:
+    #       return 1 + count(head.next, x)
+    #   else:
+    #       return count(head.next, x)
+    # }
+    #
+    # head: a0
+    # x: a1
+    #
+    # overrides a0 with the result!
+    #
+    count:
+        # if head == null: return #(0)
+        beq a0, zero, return
+
+        lw t0, 0(a0) # t0 = head.value
+        # else if head.value != x: return count(head.next, x)
+        bne t0, a1, return_count_next
+
+        # else: #(if head.value == x)
+
+        # push ra to sack
+        addi sp, sp, -4
+        sw ra, 0(sp)
+
+        lw a0, 4(a0) # a0 = head.next
+        jal ra, count # a0 = count(head.next, x)
+        addi a0, a0, 1 # a0++, "return a0 + 1"
+
+        # pop ra from stack and jump back there
+        lw ra, 0(sp)
+        addi sp, sp, 4
+        beq zero, zero, return
+
+    return: jalr zero, 0(ra)
+
+    return_count_next:
+        lw a0, 4(a0) # a0 = head.next
+
+        # push ra to sack
+        addi sp, sp, -4
+        sw ra, 0(sp)
+
+        jal ra, count # a0 = count(head.next, x)
+
+        # pop ra from stack and jump back there
+        lw ra, 0(sp)
+        addi sp, sp, 4
+        beq zero, zero, return
