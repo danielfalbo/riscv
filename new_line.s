@@ -7,7 +7,7 @@
     ecall
 
     # print new line
-    jal ra, newLine
+    jal ra, newline
 
     # print 0
     li a7, 1
@@ -15,13 +15,13 @@
     ecall
 
     # print new line
-    jal ra, newLine
+    jal ra, newline
 
     # exit gracefully
     addi a7, zero, 10
     ecall
 
-    newLine:
+    newline:
         # li: load immediate
         #       uses addi, ori, or something like that
         #       under the hood

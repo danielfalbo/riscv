@@ -21,7 +21,7 @@
 
     # if counter == 0 (we want to print the 0th fib num):
     #   just print 0 (default a0 value)
-    beq t0, zero, printAndExit
+    beq t0, zero, print_and_exit
 
     # t1: prev fib num (at the beginning, 1st fib num)
     addi t1, zero, 1
@@ -39,16 +39,16 @@
     #   t1: (prev fib num) <- t2
     #   decrement counter t0
     #
-    # (when 0 >= counter: printAndExit)
+    # (when 0 >= counter: print_and_exit)
     loop:
-        bge zero, t0, printAndExit
+        bge zero, t0, print_and_exit
         add t2, zero, a0
         add a0, a0, t1
         add t1, zero, t2
         addi t0, t0, -1
         beq zero, zero, loop
 
-    printAndExit:
+    print_and_exit:
         # print integer
         addi a7, zero, 1
         ecall

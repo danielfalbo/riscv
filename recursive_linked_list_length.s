@@ -9,9 +9,9 @@
 
 .data
     n01: .word 7, n02
-    n04: .word 8, n05
     n02: .word 11, n03
     n03: .word -2, n04
+    n04: .word 8, n05
     n05: .word 9, 0
 
     head: .word n01
@@ -35,12 +35,12 @@
 
     len:
         # if a0 != 0, jump to recursive call
-        bne a0, zero, lenRecursiveCall
+        bne a0, zero, len_recursive_call
 
         # then return
         jalr zero, ra, 0
 
-    lenRecursiveCall:
+    len_recursive_call:
         # decrement the stack pointer by 1 word
         # to make room for 1 piece of data
         addi sp, sp, -4

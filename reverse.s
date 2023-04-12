@@ -41,11 +41,11 @@
     # start store next item loop,
     # then start print list loop,
     # and exit gracefully
-    beq zero, zero, storeNextItemOrPrintNewListAndExitLoop
+    beq zero, zero, store_next_item_or_print_new_list_and_exit_loop
 
-    storeNextItemOrPrintNewListAndExitLoop:
+    store_next_item_or_print_new_list_and_exit_loop:
         # if t1 == 0, prepare pointers then start "print next item or exit" loop
-        beq t1, zero, preparePointersThenStartPrintNextItemOrExitLoop
+        beq t1, zero, prepare_pointer_then_start_print_next_item_or_exit_loop
         # else, store next item and update pointers and counters
 
         # t2 = value of item at frame pointer, current item of original array
@@ -66,9 +66,9 @@
         addi t1, t1, -1
 
         # loop
-        beq zero, zero, storeNextItemOrPrintNewListAndExitLoop
+        beq zero, zero, store_next_item_or_print_new_list_and_exit_loop
 
-    preparePointersThenStartPrintNextItemOrExitLoop:
+    prepare_pointer_then_start_print_next_item_or_exit_loop:
         # t1 = value at fp (address of beginning of original array), array length
         lw t1, 0(fp)
 
@@ -81,11 +81,11 @@
         addi t1, t1, 2
 
         # start loop
-        beq zero, zero, printNextItemOrExitLoop
+        beq zero, zero, print_next_item_or_exit_loop
 
-    printNextItemOrExitLoop:
-        # if t1 == 0, exitGracefully
-        beq t1, zero, exitGracefully
+    print_next_item_or_exit_loop:
+        # if t1 == 0, exit
+        beq t1, zero, exit
         # else, print next item and update pointers and counters
 
         # load integer at frame pointer onto a0
@@ -108,8 +108,8 @@
         addi t1, t1, -1
 
         # loop again
-        beq, zero, zero, printNextItemOrExitLoop
+        beq, zero, zero, print_next_item_or_exit_loop
 
-    exitGracefully:
+    exit:
         li a7, 10
         ecall

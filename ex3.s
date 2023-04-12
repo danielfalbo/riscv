@@ -1,5 +1,6 @@
 .data
     .asciz "acsai è fighissimo" # 0x10010000
+    # note: "è" couts for 2 characters
 
 .text
     # load the address of the beginning of the str we want to measure the length of
@@ -10,7 +11,7 @@
     # being at a0, it'll also be ready to be printed by the OS
     addi a0, zero, 0
 
-    loopLocation:
+    loop_location:
         # load the byte that begins at the address stored at s0
         # (which will be the first character of the string)
         # onto t0
@@ -20,7 +21,7 @@
         # it means we looped through the whole string
         # so we jump to the location of the program where
         # we print whatever length we counted
-        beq t0, zero, sysCallLocation
+        beq t0, zero, syscall_location
 
         # otherwise, we increase the counter of the length at a0 by 1
         addi a0, a0, 1
@@ -30,9 +31,9 @@
         addi s0, s0, 1
 
         # and jump to the beginning of this loop again
-        beq zero, zero, loopLocation
+        beq zero, zero, loop_location
 
-    sysCallLocation:
+    syscall_location:
         # load onto the register a7, the instruction code for "print integer": 1
         addi a7, zero, 1
 

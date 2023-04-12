@@ -6,9 +6,9 @@
 
 .data # 0x10010000
     n01: .word 7, n02
-    n04: .word 8, 0
     n02: .word 11, n03
     n03: .word -2, n04
+    n04: .word 8, 0
 
     head: .word n01
 
@@ -20,7 +20,7 @@
     li a0, 0
 
     # if s0 == zero, list is empty, so just print length a0 and exit
-    beq s0, zero, printAndExitGracefully
+    beq s0, zero, print_and_exit_gracefully
     # else
 
     loadNextPointerAndIncrementLengthCounterLoop:
@@ -34,9 +34,9 @@
         bne s0, zero, loadNextPointerAndIncrementLengthCounterLoop
 
         # else, print and exit
-        beq zero, zero, printAndExitGracefully
+        beq zero, zero, print_and_exit_gracefully
 
-    printAndExitGracefully:
+    print_and_exit_gracefully:
         li a7, 1
         ecall
         li a7, 10

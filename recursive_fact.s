@@ -20,8 +20,8 @@
     li a7, 1
     ecall
 
-    # call the newLine function
-    jal ra, newLine
+    # call the newline function
+    jal ra, newline
 
     # exit gracefully
     li a7, 10
@@ -29,7 +29,7 @@
 
     factorial:
         # if a0 != 0, we jump to the recursive call
-        bne a0, zero, factorialRecursiveCall
+        bne a0, zero, factorial_recursive_call
 
         # otherwise, a0 == 0, so we put 1 onto a0
         li a0, 1
@@ -37,7 +37,7 @@
         # and return to instruction at address ra
         jalr zero, ra, 0
 
-    factorialRecursiveCall:
+    factorial_recursive_call:
         # decrement the stack pointer by 2 words
         # to make room for 2 pieces of data
         addi sp, sp, -8
@@ -65,7 +65,7 @@
         # (it's like we store it onto the register that's always zero)
         jalr zero, 0(ra) # same as `jalr zero, ra, 0`
 
-    newLine:
+    newline:
         # 10 is ascii code for "\n"
         li a0, 10
         # 11 is OS instruction code for "print character"

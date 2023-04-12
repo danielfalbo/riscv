@@ -22,12 +22,12 @@
     # load onto stack pointer the address of the first array element
     addi sp, s0, 4
 
-    countLoop:
-        # if we looped through the entire array, jump to the osCall
+    count_loop:
+        # if we looped through the entire array, jump to the os_call
         #
         # that is, if the value in variable storing the number of
         # elements left to count equals zero
-        beq t0, zero, osCall
+        beq t0, zero, os_call
 
         # otherwise, load next value of the array
         lw t2, 0(sp)
@@ -42,10 +42,10 @@
         addi t0, t0, -1
 
         # and repeat
-        beq zero, zero, countLoop
+        beq zero, zero, count_loop
 
 
-    osCall:
+    os_call:
         # os call with instruction code 1 into a7: to "print integer"
         # will print the integer at a0, which is the sum we computed
         addi a7, zero, 1
