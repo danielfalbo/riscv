@@ -1,11 +1,14 @@
 .data:
-    x: .word 0
+    # x: .word 0
+    # x: .word 5
+    # x: .word 1
+    x: .word -1
 
     len: .word 4
     # arr: .word 5, 3, 0, -1
-    # arr: .word 5, 0, 0, -1
+    arr: .word 5, 0, 0, -1
     # arr: .word 0, 0, 0, 0
-    arr: .word 1, 1, 1, -1
+    # arr: .word 1, 1, 1, -1
 
 .text:
     lw t0, x
