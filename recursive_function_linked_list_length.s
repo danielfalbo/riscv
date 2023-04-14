@@ -27,7 +27,7 @@
 
         lw ra, 0(sp)
         addi sp, sp, 4
-        jalr zero, 0(ra)
+        beq, zero, zero, return
 
     return:
         jalr zero, 0(ra)
