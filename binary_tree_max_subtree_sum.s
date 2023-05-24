@@ -1,7 +1,4 @@
 #
-# hw2.s
-# Created by Daniel Falbo on 2023-05-22
-#
 # Given a binary tree (not a binary search tree,
 # just a binary tree) in the data segment,
 # this program finds the subtree with maximal sum
