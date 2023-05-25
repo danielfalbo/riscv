@@ -57,17 +57,43 @@
     # n08:    .word -1, 0, 0
     # # should give 29
 
-    root:    .word -5, n02, 0
-    n02:    .word 7, 0, n03
-    n03:    .word 14, n05, n04
-    n04:    .word -20, 0, 0
-    n05:    .word 16, 0, n06
-    n06:    .word -9, 0, n07
-    n07:    .word 8, n09, n08
-    n08:    .word 3, 0, 0
-    n09:    .word -4, 0, n10
-    n10:    .word 3, 0, 0
-    # should give 31
+    # root:    .word -5, n02, 0
+    # n02:    .word 7, 0, n03
+    # n03:    .word 14, n05, n04
+    # n04:    .word -20, 0, 0
+    # n05:    .word 16, 0, n06
+    # n06:    .word -9, 0, n07
+    # n07:    .word 8, n09, n08
+    # n08:    .word 3, 0, 0
+    # n09:    .word -4, 0, n10
+    # n10:    .word 3, 0, 0
+    # # should give 31
+
+    # root: .word 5, n02, 0
+    # n02: .word -2, n04, n03
+    # n03: .word 8, 0, n07
+    # n07: .word -10, 0, 0
+    # n04: .word 15, n06, n05
+    # n05: .word 6, 0, 0
+    # n06: .word 8, 0, 0
+    # # should give 30
+
+    root:    .word 6, n02, 0
+    n02:    .word -20, nA , n03
+    n03:    .word 12, n05, n04
+    n04:    .word 1, nX, 0
+    n05:    .word 5, 0, n06
+    n06:    .word 8, nC, n07
+    n07:    .word 11, 0, n08
+    n08:    .word -1, 0, 0
+    nA:     .word -4, 0, nB
+    nB:     .word -17, 0, 0
+    nC:     .word -16, 0, nD
+    nD:     .word 14, 0, nE
+    nE:     .word -3, 0, 0
+    nX:     .word 100, nY, 0
+    nY:     .word -20, 0, 0
+    # should give 81
 
 .text
     la a0, root
