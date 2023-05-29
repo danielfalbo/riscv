@@ -99,6 +99,10 @@
     nY:     .word -20, 0, 0
     # should give 81
 
+    # root: .word -23, 0, 0
+    # # should give 0, not -23
+    # # (see NOTE in the algorithm at the beginning of the file)
+
 .text
     la a0, root
     jal ra, max_subtree_sum
