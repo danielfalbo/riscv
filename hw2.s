@@ -13,6 +13,10 @@
 #   if root is null:
 #       return 0
 #   else if no child:
+#       # NOTE: here we assume the empty tree is a subtree of every tree and its sum is 0.
+#       #       So if you consider a tree with only 1 node having nevative value and no child or siblings,
+#       #       its subtree with maximal sum would be the empty tree having sum 0, which is larger than
+#       #       anything negative.
 #       return max(0, root.value)
 #   else:
 #       a = tree_sum(root)
